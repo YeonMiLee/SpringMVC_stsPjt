@@ -1,0 +1,43 @@
+package com.port.petfit.appointment.hospital;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.port.petfit.admin.member.AdminMemberVo;
+
+public class H_AppointmentController {
+	
+	//관리자목록(ModelAndView 사용)
+	@GetMapping("/listupAdmin")
+	public ModelAndView listupAdmin() {
+		System.out.println("[AdminMemberController] modifyAccountConfirm()");
+	
+		String nextPage = "admin/member/listup_admins";
+		
+		List<AdminMemberVo> adminMemberVos = adminMemberService.listupAdmin();
+		
+		ModelAndView modelAndView = new ModelAndView();				// 1. ModelAndView 객체를 생성한다.
+		modelAndView.setViewName(nextPage);							// 2. ModelAndView에 뷰를 설정한다.
+		modelAndView.addObject("adminMemberVos", adminMemberVos);	// 3. ModelAndView에 데이터를 추가한다.
+		
+		return modelAndView;										// 4. ModelAndView를 반환한다.		
+	}
+	
+	
+	//관리자승인
+	@GetMapping("/setAdminApproval")
+	public String setAdminApproval(@RequestParam("a_m_no") int a_m_no) {
+		System.out.println("[AdminMemberController] setAdminApproval()");
+		
+		String nextPage = "redirect:/admin/member/listupAdmin";
+		
+		adminMemberService.setAdminApproval(a_m_no);
+		
+		return nextPage;
+	}
+
+
+}

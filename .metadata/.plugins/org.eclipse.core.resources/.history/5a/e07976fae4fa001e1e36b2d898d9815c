@@ -1,0 +1,39 @@
+package com.port.petfit.appointment;
+
+
+
+@Controller
+@RequestMapping("/reservation")
+public class AppointmentController {    
+    
+	@GetMapping({"", "/"})
+	public String Appointment() {
+		System.out.println("[AppointmentController] Appointment()");
+		
+		String nextPage = "reservation";
+		
+		return nextPage;
+	
+    @Autowired
+    AppointmentService appointmentService;
+
+    @PostMapping
+    public void createAppointment(@RequestBody AppointmentVo appointmentVo) {
+        appointmentService.createAppointment(appointmentVo);
+    }
+
+    @GetMapping("/{appointmentId}")
+    public AppointmentVo getAppointmentById(@PathVariable String appointmentId) {
+        return appointmentService.getAppointmentById(appointmentId);
+    }
+    
+    @PutMapping("/{appointmentId}")
+    public void updateAppointment(@PathVariable String appointmentId, @RequestBody AppointmentVo appointmentVo) {
+        appointmentService.updateAppointment(appointmentId, appointmentVo);
+    }
+
+    @DeleteMapping("/{appointmentId}")
+    public void deleteAppointment(@PathVariable String appointmentId) {
+        appointmentService.deleteAppointment(appointmentId);
+    }
+}

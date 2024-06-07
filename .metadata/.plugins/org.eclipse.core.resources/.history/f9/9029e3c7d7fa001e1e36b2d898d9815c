@@ -1,0 +1,56 @@
+package com.port.petfit.user.member;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/user/member")
+public class UserMemberController {
+
+	@Autowired
+	UserMemberService userMemberService;
+	
+	//회원가입
+	@GetMapping("/u_register")
+	public String u_register() {
+		String nextPage = "templates/register";
+		
+		return nextPage;
+	}
+	
+	//회원가입 확인
+	@PostMapping("/u_registerConfirm")
+	public String u_registerConfirm(UserMemberVo userMemberVo) {
+		String nextPage = "templates/create_account_ok";
+		
+		int result = userMemberService.u_registerConfirm(userMemberVo);
+		
+		if(result <= 0)
+			nextPage = "templates/create_account_ng";
+		
+		return nextPage;				
+	}
+	
+	//로그인
+	@GetMapping("/u_loginForm")
+	public String u_loginForm() {
+		String nextPage = "templates/login";
+		return nextPage;
+	}
+	
+	//로그인확인
+	@PostMapping("/u_loginConfirm")
+	public String u_loginConfirm(UserMemberVo userMemberVo) {
+		String nextPage = "templates/login_ok";
+		
+		UserMemberVo loginedUserMemberVo = userMemberService.u_loginConfirm(userMemberVo);
+		
+		if(loginedUserMemberVo == null) {
+			nextPage = "templates/login_ng";
+		}
+		return nextPage;		
+	}
+}

@@ -1,0 +1,5 @@
+package com.port.petfit.appointment.user;
+
+public class H_AppointmentDao {
+
+}

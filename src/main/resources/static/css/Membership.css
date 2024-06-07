@@ -1,0 +1,114 @@
+css
+
+
+Copy code
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+}
+
+nav a {
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  height: 500px;
+  background-image: url('/image/Membership_01.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Membership Details */
+.membership-details {
+  display: flex;
+  align-items: center;
+  padding: 80px;
+}
+
+.membership-info {
+  flex: 1;
+  margin-right: 60px;
+}
+
+.membership-info h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.membership-info ul {
+  list-style-type: none;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.membership-info li {
+  margin-bottom: 10px;
+  margin-left: -40px;
+}
+
+.cta-container {
+  text-align: center;
+}
+
+.btn {
+  background-color: #3bccf8;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.membership-card {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.membership-card img {
+  max-width: 80%;
+  height: auto;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 80px;
+}
+
